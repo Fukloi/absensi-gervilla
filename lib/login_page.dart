@@ -1,21 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dashboard_page.dart';
-
-// ===== USER MODEL =====
-class UserModel {
-  String username;
-  String password;
-  String role;
-
-  UserModel(this.username, this.password, this.role);
-}
-
-// ===== DUMMY USERS =====
-List<UserModel> users = [
-  UserModel('admin', 'admin123', 'admin'),
-  UserModel('user1', 'user123', 'user'),
-  UserModel('user2', 'user123', 'user'),
-];
+import 'user_model.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -31,7 +16,9 @@ class _LoginPageState extends State<LoginPage> {
   void login() {
     try {
       final user = users.firstWhere(
-            (u) => u.username == userC.text && u.password == passC.text,
+            (u) =>
+        u.username == userC.text &&
+            u.password == passC.text,
       );
 
       Navigator.pushReplacement(
@@ -54,8 +41,9 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: Card(
           elevation: 8,
-          shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(24),
             child: SizedBox(
@@ -63,19 +51,20 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.lock, size: 60, color: Colors.indigo),
+                  const Icon(Icons.lock,
+                      size: 60, color: Colors.indigo),
                   const SizedBox(height: 20),
                   TextField(
                     controller: userC,
-                    decoration: const InputDecoration(
-                        labelText: 'Username'),
+                    decoration:
+                    const InputDecoration(labelText: 'Username'),
                   ),
                   const SizedBox(height: 15),
                   TextField(
                     controller: passC,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                        labelText: 'Password'),
+                    decoration:
+                    const InputDecoration(labelText: 'Password'),
                   ),
                   const SizedBox(height: 25),
                   SizedBox(
